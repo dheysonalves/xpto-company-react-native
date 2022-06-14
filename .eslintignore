@@ -1,0 +1,5 @@
+dist
+coverage
+.vscode
+.expo-shared
+node_modules/
