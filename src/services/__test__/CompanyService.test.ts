@@ -1,7 +1,7 @@
 import axios from "axios";
+import { CompanyService } from "..";
 
 import { BASE_URL } from "../CompanyService";
-import { createCompany, getAllCompanies } from "../CompanyService";
 
 jest.mock("axios");
 
@@ -336,7 +336,7 @@ describe("getAllCompanies", () => {
 
 			(axios.get as jest.Mock).mockResolvedValueOnce(companies);
 
-			const response = await getAllCompanies();
+			const response = await CompanyService.getAllCompanies();
 
 			expect(axios.get as jest.Mock).toHaveBeenCalledWith(
 				`${BASE_URL}/companies/`
@@ -352,7 +352,7 @@ describe("getAllCompanies", () => {
 	// 		(axios.get as jest.Mock).mockRejectedValueOnce(new Error(message));
 
 	// 		// when
-	// 		const result = await getAllCompanies();
+	// 		const result = await CompanyService.getAllCompanies();
 
 	// 		// then
 	// 		expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}/companies/`);

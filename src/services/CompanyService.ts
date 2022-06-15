@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const BASE_URL = "https://banqi-pj-challenge.herokuapp.com";
 
-interface ICompanyInformation {
+export interface ICompanyInformation {
 	id?: string;
 	name: string;
 	cnpj: string;
@@ -60,7 +60,7 @@ async function createCompany(
 	}
 }
 
-export {
+export default {
 	getAllCompanies,
 	createCompany,
 };
