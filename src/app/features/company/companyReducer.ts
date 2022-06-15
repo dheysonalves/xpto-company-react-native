@@ -27,6 +27,12 @@ export const companySlice = createSlice({
 	name: "company",
 	initialState,
 	reducers: {
+		setCompanyData: (
+			state: CompanyState,
+			{ payload }: PayloadAction<ICompanyInformation | null>
+		) => {
+			state.company = payload;
+		},
 		setLoadingState: (
 			state: CompanyState,
 			{ payload }: PayloadAction<"loading" | "idle">
@@ -55,7 +61,6 @@ export const companySlice = createSlice({
 	},
 });
 
-// Action creators are generated for each case reducer function
 export const { setLoadingState } = companySlice.actions;
 
 export default companySlice.reducer;

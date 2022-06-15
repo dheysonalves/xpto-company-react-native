@@ -41,10 +41,36 @@ async function getAllCompanies(): Promise<ICompanyInformation[]> {
 }
 
 /**
- * Get all the companies information
+ * Get the company information
+ * @method get /companies
+ * @param id (string) company id
+ * @returns Information about the company
+ */
+async function getCompany(id: string): Promise<ICompanyInformation> {
+	try {
+		const response: ICompanyInformation[] = await axios.get(
+			`${BASE_URL}/companies/`
+		);
+
+		const company = response.find((value) => value.id?.includes(id));
+
+		if (!company) {
+			throw Error;
+		}
+
+		return company;
+	} catch (error) {
+		const message = `${getCompany.name}: ${error}`;
+
+		throw Error(message);
+	}
+}
+
+/**
+ * Creates a company with new information
  * @method post /companies
  * @param body (ICompanyInformation) Body Object with company information
- * @returns Information about all the companies
+ * @returns Creates a new company
  */
 async function createCompany(
 	body: ICompanyInformation
@@ -62,5 +88,6 @@ async function createCompany(
 
 export default {
 	getAllCompanies,
+	getCompany,
 	createCompany,
 };
