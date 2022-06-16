@@ -4,24 +4,32 @@
  *
  */
 
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
-import { ColorSchemeName, } from 'react-native';
+import {
+	NavigationContainer,
+	DefaultTheme,
+	DarkTheme,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as React from "react";
+import { ColorSchemeName } from "react-native";
 
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
+import HomeScreen from "../screens/HomeScreen";
+import NotFoundScreen from "../screens/NotFoundScreen";
+import { RootStackParamList } from "../types";
+import LinkingConfiguration from "./LinkingConfiguration";
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-  return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
-    </NavigationContainer>
-  );
+export default function Navigation({
+	colorScheme,
+}: {
+	colorScheme: ColorSchemeName;
+}) {
+	return (
+		<NavigationContainer
+			linking={LinkingConfiguration}
+			theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+			<RootNavigator />
+		</NavigationContainer>
+	);
 }
 
 /**
@@ -31,14 +39,16 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  return (
-		<Stack.Navigator initialRouteName="Modal">
+	return (
+		<Stack.Navigator initialRouteName="Home">
 			<Stack.Screen
 				name="NotFound"
 				component={NotFoundScreen}
 				options={{ title: "Oops!" }}
 			/>
-			<Stack.Screen name="Modal" component={ModalScreen} />
+			<Stack.Screen name="Home" component={HomeScreen} options={{
+				title: 'Home'
+			}} />
 		</Stack.Navigator>
 	);
 }

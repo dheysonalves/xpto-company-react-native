@@ -5,7 +5,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
-	Modal: undefined;
+	Home: undefined;
 	NotFound: undefined;
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable, Image } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 import Formatter from "../../../utils/Formatter";
 
 interface ICardProps {
@@ -16,7 +16,7 @@ interface ICardProps {
 
 const Card = ({ data, onHandleSubmit }: ICardProps) => {
 	return (
-		<Pressable style={styles.container} onPress={onHandleSubmit}>
+		<TouchableOpacity style={styles.container} onPress={onHandleSubmit} activeOpacity={0.5}>
 			{data.logo && (
 				<Image
 					style={styles.image}
@@ -51,7 +51,7 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 					</View>
 				</View>
 			</View>
-		</Pressable>
+		</TouchableOpacity>
 	);
 };
 

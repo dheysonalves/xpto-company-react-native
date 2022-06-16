@@ -13,7 +13,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Modal: 'modal',
+      Home: 'modal',
       NotFound: '*',
     },
   },
