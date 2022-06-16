@@ -6,6 +6,7 @@ interface InputDataProps {
 	dataValue: string;
 	onHandleDataValue: (value: string) => void;
 	hasError: boolean;
+	errorMessage?: string;
 	isEditable?: boolean;
 }
 
@@ -14,6 +15,7 @@ const InputData = ({
 	dataValue,
 	onHandleDataValue,
 	hasError,
+	errorMessage,
 	isEditable
 }: InputDataProps) => {
 	const [isFocused, setIsFocused] = useState(false);
@@ -26,7 +28,9 @@ const InputData = ({
 			<View style={styles.wrapperText}>
 				<Text style={[styles.baseText, styles.title]}>{title}</Text>
 				{hasError && (
-					<Text style={[styles.baseText, styles.errorText]}>Can't be zero</Text>
+					<Text style={[styles.baseText, styles.errorText]}>
+						{errorMessage}
+					</Text>
 				)}
 			</View>
 			<View style={styles.inputContainer}>
@@ -85,7 +89,6 @@ const styles = StyleSheet.create({
 		color: "hsl(183, 100%, 15%)",
 		fontWeight: "700",
 		letterSpacing: 0.6,
-		textAlign: "right",
 	},
 	focused: {
 		borderColor: "hsl(172, 67%, 45%)",
