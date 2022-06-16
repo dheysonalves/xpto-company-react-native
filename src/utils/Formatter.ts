@@ -38,8 +38,13 @@ const removeWidowWord = (text: string): string => {
 	return formattedText;
 };
 
+function isImage(url: string) {
+	return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}
+
 export default {
 	formatDate,
 	formatCNPJ,
 	removeWidowWord,
+	isImage,
 };

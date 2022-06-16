@@ -16,17 +16,20 @@ interface ICardProps {
 
 const Card = ({ data, onHandleSubmit }: ICardProps) => {
 	return (
-		<TouchableOpacity style={styles.container} onPress={onHandleSubmit} activeOpacity={0.5}>
-			{data.logo && (
-				<Image
-					style={styles.image}
-					source={{
-						uri: data.logo,
-					}}
-					height={52}
-					width={52}
-				/>
-			)}
+		<TouchableOpacity
+			style={styles.container}
+			onPress={onHandleSubmit}
+			activeOpacity={0.5}>
+			<Image
+				style={styles.image}
+				source={{
+					uri: Formatter.isImage(data.logo)
+						? data.logo
+						: "https://banqi.com.br/assets/img/uploads/img-app.png",
+				}}
+				height={52}
+				width={52}
+			/>
 			<View style={styles.content}>
 				<View style={styles.topContent}>
 					<View>
@@ -47,7 +50,9 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 					</View>
 					<View>
 						<Text style={[styles.title]}>Description</Text>
-						<Text style={styles.text}>{Formatter.removeWidowWord(data.description)}</Text>
+						<Text style={styles.text}>
+							{Formatter.removeWidowWord(data.description)}
+						</Text>
 					</View>
 				</View>
 			</View>

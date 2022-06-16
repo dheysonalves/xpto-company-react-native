@@ -15,6 +15,7 @@ import { ColorSchemeName } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
+import CompanyScreen from '../screens/CompanyScreen';
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 
@@ -46,9 +47,16 @@ function RootNavigator() {
 				component={NotFoundScreen}
 				options={{ title: "Oops!" }}
 			/>
-			<Stack.Screen name="Home" component={HomeScreen} options={{
-				title: 'Home'
-			}} />
+			<Stack.Screen
+				name="Home"
+				component={HomeScreen}
+				options={{
+					title: "Home",
+				}}
+			/>
+			<Stack.Group screenOptions={{ presentation: "modal" }}>
+				<Stack.Screen name="CompanyView" component={CompanyScreen} />
+			</Stack.Group>
 		</Stack.Navigator>
 	);
 }
