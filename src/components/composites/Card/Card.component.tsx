@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
+import Formatter from "../../../utils/Formatter";
 
 interface ICardProps {
 	data: {
@@ -28,12 +29,26 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 			)}
 			<View style={styles.content}>
 				<View style={styles.topContent}>
-					<Text style={styles.text}>{data.cnpj}</Text>
-					<Text style={styles.text}>{data.createdAt}</Text>
+					<View>
+						<Text style={[styles.title]}>CNPJ</Text>
+						<Text style={styles.text}>{Formatter.formatCNPJ(data.cnpj)}</Text>
+					</View>
+					<View>
+						<Text style={[styles.title]}>Created At</Text>
+						<Text style={styles.text}>
+							{Formatter.formatDate(data.createdAt as string)}
+						</Text>
+					</View>
 				</View>
 				<View style={styles.bottomContent}>
-					<Text style={[styles.text, styles.name]}>{data.name}</Text>
-					<Text style={styles.text}>{data.description}</Text>
+					<View style={styles.nameWrapper}>
+						<Text style={[styles.title]}>Name</Text>
+						<Text style={[styles.text]}>{data.name}</Text>
+					</View>
+					<View>
+						<Text style={[styles.title]}>Description</Text>
+						<Text style={styles.text}>{data.description}</Text>
+					</View>
 				</View>
 			</View>
 		</Pressable>
@@ -42,7 +57,6 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 
 const styles = StyleSheet.create({
 	container: {
-		height: 100,
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		alignItems: "center",
@@ -69,6 +83,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
+		paddingBottom: 12,
 	},
 	bottomContent: {
 		width: "100%",
@@ -79,10 +94,15 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 16,
 	},
-	name: {
-		textTransform: 'uppercase',
-		fontWeight: '700',
-	}
+	title: {
+		color: "#0a0a0a",
+		fontWeight: "500",
+		fontSize: 14,
+		textTransform: "uppercase",
+	},
+	nameWrapper: {
+		paddingBottom: 8,
+	},
 });
 
 export default Card;
