@@ -47,7 +47,7 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 					</View>
 					<View>
 						<Text style={[styles.title]}>Description</Text>
-						<Text style={styles.text}>{data.description}</Text>
+						<Text style={styles.text}>{Formatter.removeWidowWord(data.description)}</Text>
 					</View>
 				</View>
 			</View>
