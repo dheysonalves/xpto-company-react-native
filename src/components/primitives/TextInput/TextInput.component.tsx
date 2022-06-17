@@ -5,9 +5,9 @@ interface InputDataProps {
 	title: string;
 	dataValue: string;
 	onHandleDataValue: (value: string) => void;
+	onHandleBlur?: (value: string) => void;
 	hasError: boolean;
 	errorMessage?: string;
-	isEditable?: boolean;
 }
 
 const InputData = ({
@@ -16,8 +16,9 @@ const InputData = ({
 	onHandleDataValue,
 	hasError,
 	errorMessage,
-	isEditable
-}: InputDataProps) => {
+	onHandleBlur,
+	...props
+}: InputDataProps & TextInput['props']) => {
 	const [isFocused, setIsFocused] = useState(false);
 	const handleDataValue = (value: string) => {
 		onHandleDataValue(value);
@@ -27,11 +28,6 @@ const InputData = ({
 		<View style={styles.container}>
 			<View style={styles.wrapperText}>
 				<Text style={[styles.baseText, styles.title]}>{title}</Text>
-				{hasError && (
-					<Text style={[styles.baseText, styles.errorText]}>
-						{errorMessage}
-					</Text>
-				)}
 			</View>
 			<View style={styles.inputContainer}>
 				<TextInput
@@ -40,7 +36,6 @@ const InputData = ({
 						isFocused ? styles.focused : null,
 						hasError ? styles.error : null,
 					]}
-					keyboardType="ascii-capable"
 					selectionColor="hsl(183, 100%, 15%)"
 					value={dataValue}
 					onChangeText={handleDataValue}
@@ -49,18 +44,23 @@ const InputData = ({
 					}}
 					onBlur={() => {
 						setIsFocused(false);
+						onHandleBlur;
 					}}
-					editable={isEditable}
+					{...props}
 				/>
 			</View>
+			{hasError && (
+				<Text style={[styles.baseText, styles.errorText]}>{errorMessage}</Text>
+			)}
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		alignItems: "flex-start",
-		marginVertical: 24,
+		margin: 12,
 	},
 	baseText: {
 		fontWeight: "700",
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
 	},
 	errorText: {
 		color: "red",
+		fontSize: 14,
 	},
 	error: {
 		borderColor: "red",

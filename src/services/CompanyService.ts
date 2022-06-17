@@ -8,7 +8,7 @@ export interface ICompanyInformation {
 	name: string;
 	cnpj: string;
 	description: string;
-	logo: string;
+	logo?: string;
 	createdAt?: string;
 	address: {
 		zip: string;
