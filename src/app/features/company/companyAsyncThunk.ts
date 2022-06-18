@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { CompanyService } from "../../../services";
+import { ICompanyInformation } from "../../../services/companyService";
 
 const fetchAllCompanies = createAsyncThunk(
 	"company/fetchAllCompanies",

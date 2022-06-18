@@ -1,14 +1,24 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import CardList from "../components/presentation/CardList/CardList.component";
 
 import { TextInput, Button } from "../components/primitives";
 import { useNavigation } from '@react-navigation/native';
+import { useAppSelector } from '../app/hooks';
+import { RootState } from '../app/store';
+import { useDispatch } from 'react-redux';
+import { fetchAllCompanies } from '../app/features/company/companyAsyncThunk';
 
 export default function HomeScreen() {
 	const [search, updateSearch] = React.useState('');
 	const { navigate } = useNavigation();
+	const { companies, loading } = useAppSelector((state: RootState) => state.company);
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		dispatch(fetchAllCompanies());
+	}, [dispatch]);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -23,14 +33,21 @@ export default function HomeScreen() {
 					keyboardType="web-search"
 				/>
 			</View>
-
-			<CardList />
-			<View style={styles.buttonWrapper}>
-				<Button
-					text="ADD COMPANY"
-					handleSubmit={() => navigate("NewCompanyView")}
-				/>
-			</View>
+			{loading === "loading" ? (
+				<View style={styles.indicator}>
+					<ActivityIndicator style={styles.loader} />
+				</View>
+			) : (
+				<>
+					<CardList data={companies} />
+					<View style={styles.buttonWrapper}>
+						<Button
+							text="ADD COMPANY"
+							handleSubmit={() => navigate("NewCompanyView")}
+						/>
+					</View>
+				</>
+			)}
 		</SafeAreaView>
 	);
 }
@@ -38,9 +55,18 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
+		justifyContent: "flex-start",
 		backgroundColor: "#fff",
 		padding: 24,
+	},
+	indicator: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	loader: {
+		color: '#000',
+		width: 64,
 	},
 	title: {
 		fontSize: 42,

@@ -28,11 +28,11 @@ export interface ICompanyInformation {
  */
 async function getAllCompanies(): Promise<ICompanyInformation[]> {
 	try {
-		const response: ICompanyInformation[] = await axios.get(
+		const response = await axios.get(
 			`${BASE_URL}/companies/`
 		);
 
-		return response;
+		return response.data;
 	} catch (error) {
 		const message = `${getAllCompanies.name}: ${error}`;
 

@@ -4,12 +4,17 @@ import { Card } from "../../composites";
 import Companies from "../../../mocks/companies";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps, NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ICompanyInformation } from "../../../services/companyService";
 
 interface Params {
 	id: string;
 }
 
-const CardList = () => {
+interface ICardListProps {
+	data: ICompanyInformation[];
+}
+
+const CardList = ({ data } : ICardListProps) => {
 	const { navigate } = useNavigation();
 
 	const renderItem = ({ item }) => {
@@ -27,9 +32,9 @@ const CardList = () => {
 
 	return (
 		<FlatList
-			data={Companies}
+			data={data}
 			renderItem={renderItem}
-			keyExtractor={(item) => item.id}
+			keyExtractor={(item) => item.id as string}
 			showsVerticalScrollIndicator={false}
 		/>
 	);
