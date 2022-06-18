@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled TextInput Test Suite should render the TextInput 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "margin": 12,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 18,
+            "fontWeight": "700",
+            "letterSpacing": 0.6,
+            "marginVertical": 4,
+          },
+          Object {
+            "color": "hsl(184, 14%, 56%)",
+          },
+        ]
+      }
+    >
+      Input
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      accessibilityLabel="Type me"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      selectionColor="hsl(183, 100%, 15%)"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsl(189, 41%, 97%)",
+            "borderRadius": 5,
+            "color": "hsl(183, 100%, 15%)",
+            "fontSize": 24,
+            "fontWeight": "700",
+            "letterSpacing": 0.6,
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          },
+          null,
+          null,
+        ]
+      }
+      testID="textInputType"
+      value=""
+    />
+  </View>
+</View>
+`;
