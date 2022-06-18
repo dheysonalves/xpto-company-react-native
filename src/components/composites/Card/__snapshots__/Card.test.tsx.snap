@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component test suite should return the Card component 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderColor": "#000",
+      "borderRadius": 5,
+      "borderWidth": 2,
+      "flexDirection": "row",
+      "justifyContent": "flex-start",
+      "marginVertical": 16,
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Image
+    height={52}
+    source={
+      Object {
+        "uri": "https://banqi.com.br/assets/img/uploads/img-app.png",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 50,
+        "height": 64,
+        "marginRight": 16,
+        "width": 64,
+      }
+    }
+    width={52}
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingBottom": 12,
+          "width": "100%",
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#0a0a0a",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "textTransform": "uppercase",
+              },
+            ]
+          }
+          testID="cnpjText"
+        >
+          CNPJ
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          84.649.484/9464-64
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#0a0a0a",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "textTransform": "uppercase",
+              },
+            ]
+          }
+          testID="createdAtText"
+        >
+          Created At
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          31/05/2022
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "paddingBottom": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#0a0a0a",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "textTransform": "uppercase",
+              },
+            ]
+          }
+          testID="nameText"
+        >
+          Name
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+              },
+            ]
+          }
+        >
+          Testing
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#0a0a0a",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "textTransform": "uppercase",
+              },
+            ]
+          }
+          testID="descriptionText"
+        >
+          Description
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          MEI
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

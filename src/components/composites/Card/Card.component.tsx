@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Formatter from "../../../utils/Formatter";
 
 interface ICardProps {
@@ -33,11 +33,15 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 			<View style={styles.content}>
 				<View style={styles.topContent}>
 					<View>
-						<Text style={[styles.title]}>CNPJ</Text>
+						<Text style={[styles.title]} testID="cnpjText">
+							CNPJ
+						</Text>
 						<Text style={styles.text}>{Formatter.formatCNPJ(data.cnpj)}</Text>
 					</View>
 					<View>
-						<Text style={[styles.title]}>Created At</Text>
+						<Text style={[styles.title]} testID="createdAtText">
+							Created At
+						</Text>
 						<Text style={styles.text}>
 							{Formatter.formatDate(data.createdAt as string)}
 						</Text>
@@ -45,11 +49,11 @@ const Card = ({ data, onHandleSubmit }: ICardProps) => {
 				</View>
 				<View style={styles.bottomContent}>
 					<View style={styles.nameWrapper}>
-						<Text style={[styles.title]}>Name</Text>
+						<Text style={[styles.title]} testID="nameText">Name</Text>
 						<Text style={[styles.text]}>{data.name}</Text>
 					</View>
 					<View>
-						<Text style={[styles.title]}>Description</Text>
+						<Text style={[styles.title]} testID="descriptionText">Description</Text>
 						<Text style={styles.text}>
 							{Formatter.removeWidowWord(data.description)}
 						</Text>
