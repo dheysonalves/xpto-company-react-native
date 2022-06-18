@@ -1,24 +1,33 @@
-import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import React from "react";
+import {
+	Platform,
+	SafeAreaView,
+	StyleSheet,
+	View,
+	Text,
+	ActivityIndicator,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import CardList from "../components/presentation/CardList/CardList.component";
 
 import { TextInput, Button } from "../components/primitives";
-import { useNavigation } from '@react-navigation/native';
-import { useAppSelector } from '../app/hooks';
-import { RootState } from '../app/store';
-import { useDispatch } from 'react-redux';
-import { fetchAllCompanies } from '../app/features/company/companyAsyncThunk';
+import { useNavigation } from "@react-navigation/native";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { RootState } from "../app/store";
+import { useDispatch } from "react-redux";
+import { fetchAllCompanies } from "../app/features/company/companyAsyncThunk";
 
 export default function HomeScreen() {
-	const [search, updateSearch] = React.useState('');
+	const [search, updateSearch] = React.useState("");
 	const { navigate } = useNavigation();
-	const { companies, loading } = useAppSelector((state: RootState) => state.company);
-	const dispatch = useDispatch();
+	const { companies, loading } = useAppSelector(
+		(state: RootState) => state.company
+	);
+	const dispatch = useAppDispatch();
 
 	React.useEffect(() => {
 		dispatch(fetchAllCompanies());
-	}, [dispatch]);
+	}, [dispatch, fetchAllCompanies]);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -43,9 +52,11 @@ export default function HomeScreen() {
 					<View style={styles.buttonWrapper}>
 						<Button
 							text="ADD COMPANY"
-							handleSubmit={() => navigate("NewCompanyView", {
-								newCompany: true,
-							})}
+							handleSubmit={() =>
+								navigate("NewCompanyView", {
+									newCompany: true,
+								})
+							}
 						/>
 					</View>
 				</>
@@ -63,11 +74,11 @@ const styles = StyleSheet.create({
 	},
 	indicator: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	loader: {
-		color: '#000',
+		color: "#000",
 		width: 64,
 	},
 	title: {

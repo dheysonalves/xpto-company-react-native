@@ -9,7 +9,13 @@ const companyId = "53f750ae-f773-4f55-a066-5fabd8cd2118";
 jest.mock("axios");
 
 const mockNetworkResponse = () => {
-	(axios.get as jest.Mock).mockResolvedValueOnce(Companies);
+	(axios.get as jest.Mock).mockResolvedValueOnce({
+		data: Companies,
+		status: 200,
+		statusText: "Ok",
+		headers: {},
+		config: {},
+	});
 };
 
 describe("Company slice redux state tests", () => {
@@ -25,6 +31,7 @@ describe("Company slice redux state tests", () => {
 
 	it("should be able to fetch the company list", async () => {
 		const result = await store.dispatch(fetchAllCompanies());
+
 		const companies = result.payload as ICompanyInformation[];
 
 		expect(result.type).toBe("company/fetchAllCompanies/fulfilled");

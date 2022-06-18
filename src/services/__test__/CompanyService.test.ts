@@ -10,7 +10,13 @@ describe("getAllCompanies", () => {
 	describe("when API call is successful", () => {
 		it("should return companies list", async () => {
 
-			(axios.get as jest.Mock).mockResolvedValueOnce(Companies);
+			(axios.get as jest.Mock).mockResolvedValueOnce({
+				data: Companies,
+				status: 200,
+				statusText: "Ok",
+				headers: {},
+				config: {},
+			});
 
 			const response = await CompanyService.getAllCompanies();
 
