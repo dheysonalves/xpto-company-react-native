@@ -5,8 +5,6 @@ import * as Yup from "yup";
 
 import { Button, TextInput } from "../../primitives";
 import { ICompanyInformation } from "../../../services/CompanyService";
-import Formatter from "../../../utils/Formatter";
-import { useNavigation } from "@react-navigation/native";
 
 const SchemaValidation = Yup.object().shape({
 	name: Yup.string()
@@ -43,8 +41,14 @@ type CompanyParams = {
 	item: ICompanyInformation;
 };
 
-const CompanyForm = ({ route }) => {
-	const { navigate } = useNavigation();
+interface CompanyForm {
+	onSubmit?: (values: ICompanyInformation) => void;
+	route: {
+		params: CompanyParams;
+	};
+}
+
+const CompanyForm = ({ route, onSubmit }: CompanyForm) => {
 	const { newCompany, item } = route.params as CompanyParams;
 
 	const initialValues: ICompanyInformation = {
@@ -61,13 +65,19 @@ const CompanyForm = ({ route }) => {
 			complement: "",
 		},
 	};
+
+	const handleSubmit = async (values: ICompanyInformation) => {
+		if (onSubmit) {
+			onSubmit(values);
+		}
+	};
+
 	return (
 		<Formik
 			enableReinitialize={true}
 			initialValues={newCompany ? initialValues : item}
-			onSubmit={(values, actions) => {
-				navigate("Home");
-				console.log(values);
+			onSubmit={(values) => {
+				handleSubmit(values);
 			}}
 			validationSchema={SchemaValidation}>
 			{({
@@ -183,7 +193,7 @@ const CompanyForm = ({ route }) => {
 						errorMessage={errors.address?.complement}
 					/>
 					<View style={styles.buttonWrapper}>
-						<Button handleSubmit={handleSubmit} text="Submit" />
+						<Button handleSubmit={handleSubmit} text="SUBMIT" testID="formSubmitButton" />
 					</View>
 				</View>
 			)}
@@ -204,7 +214,7 @@ const styles = StyleSheet.create({
 	},
 	buttonWrapper: {
 		marginTop: 24,
-	}
+	},
 });
 
 export default CompanyForm;

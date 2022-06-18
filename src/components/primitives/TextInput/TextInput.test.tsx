@@ -45,7 +45,7 @@ describe("Styled TextInput Test Suite", () => {
 	it("should type and return a text in the screen", async () => {
 		const famousProgrammerInHistory = "Ada Lovelace";
 
-		const { getByText, getByTestId, queryByTestId } = render(
+		const { getByTestId, queryByTestId } = render(
 			<TextInputRender />
 		);
 
