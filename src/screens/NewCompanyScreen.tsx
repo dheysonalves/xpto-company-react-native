@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
 	View,
@@ -12,16 +11,12 @@ import CompanyForm from "../components/behavior/CompanyForm/CompanyForm.componen
 import CompanyInfo from "../components/presentation/CompanyInfo/CompanyInfo.component";
 import { Button } from "../components/primitives";
 
-const CompanyScreen = ({ route }) => {
-	const { item } = route.params;
-	const { navigate } = useNavigation();
-
+const NewCompanyScreen = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView showsVerticalScrollIndicator={false}>
-				<CompanyInfo {...item} />
+				<CompanyForm />
 			</ScrollView>
-			<Button text="EDIT COMPANY" handleSubmit={() => navigate('NewCompanyView')} />
 		</SafeAreaView>
 	);
 };
@@ -65,4 +60,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default CompanyScreen;
+export default NewCompanyScreen;

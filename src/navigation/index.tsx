@@ -18,6 +18,7 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import CompanyScreen from '../screens/CompanyScreen';
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import NewCompanyScreen from "../screens/NewCompanyScreen";
 
 export default function Navigation({
 	colorScheme,
@@ -56,6 +57,7 @@ function RootNavigator() {
 			/>
 			<Stack.Group screenOptions={{ presentation: "modal" }}>
 				<Stack.Screen name="CompanyView" component={CompanyScreen} />
+				<Stack.Screen name="NewCompanyView" component={NewCompanyScreen} />
 			</Stack.Group>
 		</Stack.Navigator>
 	);

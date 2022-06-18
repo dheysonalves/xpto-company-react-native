@@ -8,6 +8,7 @@ export type RootStackParamList = {
 	Home: undefined;
 	NotFound: undefined;
 	CompanyView: undefined;
+	NewCompanyView: undefined;
 };
 
 declare global {

@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Button, TextInput } from "../../primitives";
 import { ICompanyInformation } from "../../../services/CompanyService";
 import Formatter from "../../../utils/Formatter";
+import { useNavigation } from "@react-navigation/native";
 
 const SchemaValidation = Yup.object().shape({
 	name: Yup.string()
@@ -38,6 +39,8 @@ const SchemaValidation = Yup.object().shape({
 });
 
 const CompanyForm = () => {
+	const { navigate } = useNavigation();
+
 	const initialValues: ICompanyInformation = {
 		name: "",
 		cnpj: "",
@@ -56,6 +59,7 @@ const CompanyForm = () => {
 		<Formik
 			initialValues={initialValues}
 			onSubmit={(values, actions) => {
+				navigate('Home');
 				console.log(values);
 			}}
 			validationSchema={SchemaValidation}>

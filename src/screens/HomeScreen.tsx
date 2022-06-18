@@ -4,18 +4,29 @@ import { StatusBar } from "expo-status-bar";
 import CardList from "../components/presentation/CardList/CardList.component";
 
 import { TextInput, Button } from "../components/primitives";
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
 	const [search, updateSearch] = React.useState('');
+	const { navigate } = useNavigation();
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
 			<Text style={styles.title}>BANQI PROJECT</Text>
-			<TextInput title="Search" dataValue={search} onHandleDataValue={updateSearch} hasError={false} />
+			<TextInput
+				title="Search"
+				dataValue={search}
+				onHandleDataValue={updateSearch}
+				hasError={false}
+				keyboardType="web-search"
+			/>
 			<CardList />
 			<View style={styles.buttonWrapper}>
-				<Button text="ADD COMPANY" handleSubmit={() => console.log("submit")} />
+				<Button
+					text="ADD COMPANY"
+					handleSubmit={() => navigate("NewCompanyView")}
+				/>
 			</View>
 		</SafeAreaView>
 	);
