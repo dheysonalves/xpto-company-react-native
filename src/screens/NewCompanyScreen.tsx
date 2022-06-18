@@ -8,8 +8,6 @@ import {
 	Image,
 } from "react-native";
 import CompanyForm from "../components/behavior/CompanyForm/CompanyForm.component";
-import CompanyInfo from "../components/presentation/CompanyInfo/CompanyInfo.component";
-import { Button } from "../components/primitives";
 
 const NewCompanyScreen = () => {
 	return (

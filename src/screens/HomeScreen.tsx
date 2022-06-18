@@ -13,14 +13,17 @@ export default function HomeScreen() {
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-			<Text style={styles.title}>BANQI PROJECT</Text>
-			<TextInput
-				title="Search"
-				dataValue={search}
-				onHandleDataValue={updateSearch}
-				hasError={false}
-				keyboardType="web-search"
-			/>
+			<View>
+				<Text style={styles.title}>BANQI PROJECT</Text>
+				<TextInput
+					title="Search"
+					dataValue={search}
+					onHandleDataValue={updateSearch}
+					hasError={false}
+					keyboardType="web-search"
+				/>
+			</View>
+
 			<CardList />
 			<View style={styles.buttonWrapper}>
 				<Button

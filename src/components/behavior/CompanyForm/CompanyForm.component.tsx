@@ -59,7 +59,7 @@ const CompanyForm = () => {
 		<Formik
 			initialValues={initialValues}
 			onSubmit={(values, actions) => {
-				navigate('Home');
+				navigate("Home");
 				console.log(values);
 			}}
 			validationSchema={SchemaValidation}>
@@ -175,8 +175,9 @@ const CompanyForm = () => {
 						}
 						errorMessage={errors.address?.complement}
 					/>
-
-					<Button handleSubmit={handleSubmit} text="Submit" />
+					<View style={styles.buttonWrapper}>
+						<Button handleSubmit={handleSubmit} text="Submit" />
+					</View>
 				</View>
 			)}
 		</Formik>
@@ -194,6 +195,9 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		marginVertical: 24,
 	},
+	buttonWrapper: {
+		marginTop: 24,
+	}
 });
 
 export default CompanyForm;
