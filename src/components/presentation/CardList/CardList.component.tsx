@@ -1,14 +1,9 @@
 import React from "react";
 import { FlatList } from "react-native";
 import { Card } from "../../composites";
-import Companies from "../../../mocks/companies";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackScreenProps, NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ICompanyInformation } from "../../../services/companyService";
 
-interface Params {
-	id: string;
-}
+import { useNavigation } from "@react-navigation/native";
+import { ICompanyInformation } from "../../../services/companyService";
 
 interface ICardListProps {
 	data: ICompanyInformation[];

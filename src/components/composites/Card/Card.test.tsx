@@ -1,12 +1,8 @@
 import React from "react";
 
 import renderer from "react-test-renderer";
-import { Text } from "react-native";
 import {
-	fireEvent,
 	render,
-	waitFor,
-	cleanup,
 } from "@testing-library/react-native";
 import Card from "./Card.component";
 import Companies from "../../../mocks/companies";
