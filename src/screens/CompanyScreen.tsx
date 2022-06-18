@@ -11,9 +11,14 @@ import {
 import CompanyForm from "../components/behavior/CompanyForm/CompanyForm.component";
 import CompanyInfo from "../components/presentation/CompanyInfo/CompanyInfo.component";
 import { Button } from "../components/primitives";
+import { ICompanyInformation } from "../services/companyService";
+
+type CompanyParams = {
+	item: ICompanyInformation;
+};
 
 const CompanyScreen = ({ route }) => {
-	const { item } = route.params;
+	const { item } = route.params as CompanyParams;
 	const { navigate } = useNavigation();
 
 	return (
@@ -21,7 +26,13 @@ const CompanyScreen = ({ route }) => {
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<CompanyInfo {...item} />
 			</ScrollView>
-			<Button text="EDIT COMPANY" handleSubmit={() => navigate('NewCompanyView')} />
+			<Button
+				text="EDIT COMPANY"
+				handleSubmit={() => navigate("NewCompanyView", {
+					item,
+					newCompany: false,
+				})}
+			/>
 		</SafeAreaView>
 	);
 };

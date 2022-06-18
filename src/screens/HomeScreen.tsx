@@ -43,7 +43,9 @@ export default function HomeScreen() {
 					<View style={styles.buttonWrapper}>
 						<Button
 							text="ADD COMPANY"
-							handleSubmit={() => navigate("NewCompanyView")}
+							handleSubmit={() => navigate("NewCompanyView", {
+								newCompany: true,
+							})}
 						/>
 					</View>
 				</>

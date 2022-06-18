@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import CompanyForm from "../components/behavior/CompanyForm/CompanyForm.component";
 
-const NewCompanyScreen = () => {
+const NewCompanyScreen = ({ route }) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView showsVerticalScrollIndicator={false}>
-				<CompanyForm />
+				<CompanyForm route={route}/>
 			</ScrollView>
 		</SafeAreaView>
 	);

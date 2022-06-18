@@ -38,8 +38,14 @@ const SchemaValidation = Yup.object().shape({
 	}),
 });
 
-const CompanyForm = () => {
+type CompanyParams = {
+	newCompany: boolean;
+	item: ICompanyInformation;
+};
+
+const CompanyForm = ({ route }) => {
 	const { navigate } = useNavigation();
+	const { newCompany, item } = route.params as CompanyParams;
 
 	const initialValues: ICompanyInformation = {
 		name: "",
@@ -57,7 +63,8 @@ const CompanyForm = () => {
 	};
 	return (
 		<Formik
-			initialValues={initialValues}
+			enableReinitialize={true}
+			initialValues={newCompany ? initialValues : item}
 			onSubmit={(values, actions) => {
 				navigate("Home");
 				console.log(values);
