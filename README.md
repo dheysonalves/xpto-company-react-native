@@ -4,10 +4,11 @@ XPTO company wants to create a banQi account. You have to provide a way to make 
 
 ## Description
 
-Your app should be able to complete the following tasks:
+I managed to work only with those below:
 
 * Get a company
 * List all companies
+
 The api to be consumed is <https://banqi-pj-challenge.herokuapp.com/companies/>.
 
 The grading of the app  will be based on three criteria:
