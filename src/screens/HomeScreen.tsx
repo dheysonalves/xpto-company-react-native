@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	Platform,
 	SafeAreaView,
@@ -10,22 +10,40 @@ import {
 import { StatusBar } from "expo-status-bar";
 import CardList from "../components/presentation/CardList/CardList.component";
 
-import { TextInput, Button } from "../components/primitives";
-import { useNavigation } from "@react-navigation/native";
+import { TextInput } from "../components/primitives";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
 import { fetchAllCompanies } from "../app/features/company/companyAsyncThunk";
+import { ICompanyInformation } from "../services/companyService";
 
 export default function HomeScreen() {
 	const [search, updateSearch] = React.useState("");
 	const { companies, loading } = useAppSelector(
 		(state: RootState) => state.company
 	);
+	const [filteredCompanies, updateFilteredCompanies] =
+		useState<ICompanyInformation[]>(companies);
 	const dispatch = useAppDispatch();
+
+	const filterCompanies = React.useCallback(() => {
+		updateFilteredCompanies(
+			companies.filter((item) => item.name.includes(search))
+		);
+	}, [search]);
 
 	React.useEffect(() => {
 		dispatch(fetchAllCompanies());
 	}, [dispatch, fetchAllCompanies]);
+
+	React.useEffect(() => {
+		if (loading === "idle") {
+			updateFilteredCompanies(companies);
+		}
+	}, [loading]);
+
+	React.useEffect(() => {
+		filterCompanies();
+	}, [search]);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -47,7 +65,7 @@ export default function HomeScreen() {
 				</View>
 			) : (
 				<>
-					<CardList data={companies} testId="cardList" />
+					<CardList data={filteredCompanies} testId="cardList" />
 				</>
 			)}
 		</SafeAreaView>
