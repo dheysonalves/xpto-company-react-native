@@ -1,16 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-	View,
-	Text,
-	ScrollView,
-	SafeAreaView,
-	StyleSheet,
-	Image,
-} from "react-native";
-import CompanyForm from "../components/behavior/CompanyForm/CompanyForm.component";
+import { ScrollView, SafeAreaView, StyleSheet } from "react-native";
 import CompanyInfo from "../components/presentation/CompanyInfo/CompanyInfo.component";
-import { Button } from "../components/primitives";
 import { ICompanyInformation } from "../services/companyService";
 
 type CompanyParams = {
@@ -19,20 +9,12 @@ type CompanyParams = {
 
 const CompanyScreen = ({ route }) => {
 	const { item } = route.params as CompanyParams;
-	const { navigate } = useNavigation();
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<CompanyInfo {...item} />
 			</ScrollView>
-			<Button
-				text="EDIT COMPANY"
-				handleSubmit={() => navigate("NewCompanyView", {
-					item,
-					newCompany: false,
-				})}
-			/>
 		</SafeAreaView>
 	);
 };

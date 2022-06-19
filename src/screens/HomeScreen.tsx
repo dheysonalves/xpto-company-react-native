@@ -14,12 +14,10 @@ import { TextInput, Button } from "../components/primitives";
 import { useNavigation } from "@react-navigation/native";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
-import { useDispatch } from "react-redux";
 import { fetchAllCompanies } from "../app/features/company/companyAsyncThunk";
 
 export default function HomeScreen() {
 	const [search, updateSearch] = React.useState("");
-	const { navigate } = useNavigation();
 	const { companies, loading } = useAppSelector(
 		(state: RootState) => state.company
 	);
@@ -40,25 +38,16 @@ export default function HomeScreen() {
 					onHandleDataValue={updateSearch}
 					hasError={false}
 					keyboardType="web-search"
+					testID="textInputSearch"
 				/>
 			</View>
 			{loading === "loading" ? (
 				<View style={styles.indicator}>
-					<ActivityIndicator style={styles.loader} />
+					<ActivityIndicator style={styles.loader} testID="loader" />
 				</View>
 			) : (
 				<>
-					<CardList data={companies} />
-					<View style={styles.buttonWrapper}>
-						<Button
-							text="ADD COMPANY"
-							handleSubmit={() =>
-								navigate("NewCompanyView", {
-									newCompany: true,
-								})
-							}
-						/>
-					</View>
+					<CardList data={companies} testId="cardList" />
 				</>
 			)}
 		</SafeAreaView>

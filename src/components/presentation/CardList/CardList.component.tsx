@@ -7,9 +7,10 @@ import { ICompanyInformation } from "../../../services/companyService";
 
 interface ICardListProps {
 	data: ICompanyInformation[];
+	testId?: string;
 }
 
-const CardList = ({ data } : ICardListProps) => {
+const CardList = ({ data, testId } : ICardListProps) => {
 	const { navigate } = useNavigation();
 
 	const renderItem = ({ item }) => {
@@ -27,6 +28,7 @@ const CardList = ({ data } : ICardListProps) => {
 
 	return (
 		<FlatList
+			testID={testId}
 			data={data}
 			renderItem={renderItem}
 			keyExtractor={(item) => item.id as string}

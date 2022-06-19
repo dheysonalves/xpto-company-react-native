@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Screen test should render the home screen 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "padding": 24,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "color": "#0a0a0a",
+          "fontSize": 42,
+          "fontWeight": "bold",
+          "textAlign": "center",
+          "textTransform": "uppercase",
+        }
+      }
+    >
+      BANQI PROJECT
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "margin": 12,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "letterSpacing": 0.6,
+                "marginVertical": 4,
+              },
+              Object {
+                "color": "hsl(184, 14%, 56%)",
+              },
+            ]
+          }
+        >
+          Search
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <TextInput
+          keyboardType="web-search"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          selectionColor="hsl(183, 100%, 15%)"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsl(189, 41%, 97%)",
+                "borderRadius": 5,
+                "color": "hsl(183, 100%, 15%)",
+                "fontSize": 24,
+                "fontWeight": "700",
+                "letterSpacing": 0.6,
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              null,
+              null,
+            ]
+          }
+          testID="textInputSearch"
+          value=""
+        />
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    data={Array []}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    testID="cardList"
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View />
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;

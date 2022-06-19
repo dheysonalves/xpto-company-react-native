@@ -1,5 +1,4 @@
-
-import axios from 'axios';
+import axios from "axios";
 
 export const BASE_URL = "https://banqi-pj-challenge.herokuapp.com";
 
@@ -48,11 +47,11 @@ async function getAllCompanies(): Promise<ICompanyInformation[]> {
  */
 async function getCompany(id: string): Promise<ICompanyInformation> {
 	try {
-		const response: ICompanyInformation[] = await axios.get(
+		const { data } = await axios.get<ICompanyInformation[]>(
 			`${BASE_URL}/companies/`
 		);
 
-		const company = response.find((value) => value.id?.includes(id));
+		const company = data.find((value) => value.id?.includes(id));
 
 		if (!company) {
 			throw Error;
