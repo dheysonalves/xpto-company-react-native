@@ -27,7 +27,7 @@ export default function HomeScreen() {
 
 	const filterCompanies = React.useCallback(() => {
 		updateFilteredCompanies(
-			companies.filter((item) => item.name.includes(search))
+			companies.filter((item) => item.name.includes(search) || item.cnpj.includes(search))
 		);
 	}, [search]);
 
