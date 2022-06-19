@@ -4,7 +4,7 @@ XPTO company wants to create a banQi account. You have to provide a way to make 
 
 ## Description
 
-I managed to work only with those below:
+I managed to work only with those below. Focused more on architecture, unit tests and integration tests with those two caractheristics below:
 
 * Get a company
 * List all companies
